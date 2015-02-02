@@ -78,6 +78,8 @@ body {
   position: relative;
   height: 165px;
   width:220px;
+  text-shadow: -1px -1px black;
+  color: white;
 }
 #progress {
  width: 97%;   
@@ -87,6 +89,7 @@ body {
  position: absolute;
  bottom: 5px;
  font-size: 10px;
+ background-color: gray;
 }
 
 #status {

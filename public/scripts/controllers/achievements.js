@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name pathleteApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the pathleteApp
- */
 app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
@@ -22,6 +15,9 @@ app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
           $scope.userInfo = user;
           $scope.totalSteps = user.stats.lifetime.total.steps;
           $scope.totalFlights = user.stats.lifetime.total.floors;
+          if(!$scope.totalFlights){
+            $scope.totalFlights = 0;
+          }
 
           $scope.getPercent = function(goal, progress){  //used to set width of progress in bar
             if((progress/goal) < 1){
@@ -31,17 +27,14 @@ app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
             }
           };
 
-          // $scope.backgroundimage="url('../images/GoldenGateBridge.jpg')";
-
           $scope.achievements = [{
             name: 'First Steps',
             description:'Walk across the Golden Gate Bridge!',
             goal: 3400,
             unit:'steps',
             width: $scope.getPercent(3400, $scope.totalSteps),
-            // width: ($scope.totalFlights/2900)*100 < 100 ? ($scope.totalFlights/2900)*100 : 100,
             current: $scope.totalSteps, 
-            backgroundimage: "url(../images/'GoldenGateBridge.jpg')"
+            image: "background-image: url(../images/GoldenGateBridge.jpg); background-size: contain; border: 1px solid black;"
           },
           {
             name: 'Bay to Breakers',
@@ -49,15 +42,17 @@ app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
             goal: 15000,
             unit:'steps',
             width: $scope.getPercent(15000, $scope.totalSteps),
-            current: $scope.totalSteps
+            current: $scope.totalSteps,
+            image: "background-image: url(../images/bayToBreakers.jpg); background-size: contain; border: 1px solid black;"
           }, 
           {
-            name: 'Stair Challenge',
-            description:'Climb 50 flights of stairs',
-            goal: 50,
-            unit: 'flights',
-            width: $scope.getPercent(50, $scope.totalFlights),
-            current: $scope.totalFlights
+            name: 'Shire to Mordor',
+            description:'Does one simply walk into Mordor?',
+            goal: 3600000,
+            unit: 'steps',
+            width: $scope.getPercent(3600000, $scope.totalSteps),
+            current: $scope.totalSteps,
+            image: "background-image: url(../images/Mordor.jpg); background-size: contain; border: 1px solid black;"
 
           },
           {
@@ -66,7 +61,8 @@ app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
             goal: 290,  
             unit: 'flights',
             width: $scope.getPercent(290, $scope.totalFlights),
-            current: $scope.totalFlights
+            current: $scope.totalFlights,
+            image: "background-image: url(../images/Burj.jpg); background-size: contain; border: 1px solid black;"
           },
           {
             name: 'Everest Challenge',
@@ -74,7 +70,8 @@ app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
             goal: 1200,
             unit: 'flights',
             width: $scope.getPercent(1200, $scope.totalFlights),
-            current: $scope.totalFlights      
+            current: $scope.totalFlights,
+            image: "background-image: url(../images/Everest_background.jpg); background-size: contain; border: 1px solid black;"     
 
           },
           {
@@ -83,20 +80,12 @@ app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
             goal: 5146000,
             unit: 'steps',
             width: $scope.getPercent(5146000, $scope.totalSteps),
-            current: $scope.totalSteps
+            current: $scope.totalSteps,
+            image: "background-image: url(../images/america.jpg); background-size: contain; border: 1px solid black;"
           }
           ]
-
-          console.log($scope.achievements);
-          
-          
-          //get total stairs    
         });
     }
     $scope.getUserInfo();
-
-
-
-
-    
+  
   });
