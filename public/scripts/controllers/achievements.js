@@ -15,6 +15,7 @@ app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
           $scope.userInfo = user;
           $scope.totalSteps = user.stats.lifetime.total.steps;
           $scope.totalFlights = user.stats.lifetime.total.floors;
+          
           if(!$scope.totalFlights){
             $scope.totalFlights = 0;
           }
